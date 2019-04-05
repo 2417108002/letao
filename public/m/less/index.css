@@ -77,6 +77,9 @@ body {
   align-items: center;
   color: #fff;
 }
+#footer .mui-row > div a.footActive {
+  color: orange;
+}
 #nav {
   padding: .1rem;
 }
@@ -111,5 +114,17 @@ body {
   display: block;
 }
 #brand .mui-row .mui-col-xs-3 > a > img {
+  width: 100%;
+}
+.product .title a {
+  display: block;
+}
+.product .title a img {
+  width: 100%;
+}
+.product .mui-row .mui-col-xs-6 > a {
+  display: block;
+}
+.product .mui-row .mui-col-xs-6 > a > img {
   width: 100%;
 }

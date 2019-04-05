@@ -88,3 +88,61 @@ body {
 #footer .mui-row > div a.footActive {
   color: orange;
 }
+#header .left {
+  display: flex;
+}
+#header .left a {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+#header .center input {
+  width: 100%;
+  height: .3rem;
+  border-radius: .05rem;
+  margin-top: .07rem;
+  font-size: .14rem;
+  padding-left: .05rem;
+  background: #fff;
+  text-align: left;
+}
+#main {
+  display: flex;
+}
+#main .category-list {
+  width: .8rem;
+}
+#main .category-list ul {
+  list-style: none;
+}
+#main .category-list ul li a {
+  display: block;
+  width: .8rem;
+  height: .45rem;
+  line-height: .45rem;
+  text-align: center;
+  color: #666;
+  border-bottom: 1px solid #ccc;
+  background: #fff;
+}
+#main .product-list {
+  flex: 1;
+  padding: .1rem;
+  background-color: #ccc;
+}
+#main .product-list #brand .mui-row .mui-col-xs-4 {
+  margin-bottom: .05rem;
+}
+#main .product-list #brand .mui-row .mui-col-xs-4 > a {
+  display: block;
+  background-color: #fff;
+}
+#main .product-list #brand .mui-row .mui-col-xs-4 > a > img {
+  width: 100%;
+}
+#main .product-list #brand .mui-row .mui-col-xs-4 > a p {
+  margin-bottom: 0;
+  text-align: center;
+}

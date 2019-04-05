@@ -20,10 +20,17 @@ h5,
 h6 {
     margin: 0;
 }
-
+ * {
+    margin: 0;
+    padding: 0;
+}
 // 去除图片和块级元素3px间隙
 img {
     vertical-align: middle;
+}
+input {
+    border: none;
+    outline: none;
 }
 
 // 3. 一些公共样式 头部底部公共样式  改完了less之后发现样式没出来在去index.less保存一下
@@ -85,6 +92,9 @@ body {
            flex-direction: column;
            align-items: center;
            color: #fff;
+           &.footActive {
+            color: orange;   
+       }
        }
     }
     }
