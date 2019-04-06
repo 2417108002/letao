@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>搜索页面</title>
+     <!-- 引入mui框架样式 -->
+     <link rel="stylesheet" href="./lib/mui/css/mui.css">
+     <!-- 引入字体图标 -->
+     <link rel="stylesheet" href="./lib/fontAwesome/css/font-awesome.css">
+     <!-- 引入网站图标 -->
+     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+     <!-- 引入自己的样式文件 -->
+     <link rel="stylesheet" href="./less/search.css">
+</head>
+<body>
+        <headr id="header">
+            <div class="left">
+                <a href="#">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+            </div>
+            <div class="center">
+               <h4>搜索中心</h4>
+            </div>
+            <div class="right">
+                
+            </div>
+        </headr>
+        <main id="main">
+                <form action="#">
+                        <input class="search" type="seaerch" placeholder="请输入你要搜索的商品">
+                        <input class="searchBtn" type="button" value="搜索">
+                </form>
+                <div class="mui-card">
+                        <!--页眉，放置标题-->
+                        <div class="mui-card-header">
+                            <span>历史搜索</span>
+                            <span class="fa fa-trash btn-clear">清空记录</span>
+                        </div>
+                        <!--内容区-->
+                        <div class="mui-card-content">
+                            <ul class="record mui-table-view"></ul>
+                        </div>
+                 </div>
+        </main>
+        <footer id="footer">
+            <div class="mui-row">
+                <div class="mui-col-xs-3">
+                    <a href="#">
+                        <i class="fa fa-home"></i>
+                        首页
+                    </a>
+                </div>
+                <div class="mui-col-xs-3">
+                    <a href="#" class="footActive">
+                        <i class="fa fa-home"></i>
+                        分类
+                    </a>
+                </div>
+                <div class="mui-col-xs-3">
+                    <a href="#">
+                        <i class="fa fa-home"></i>
+                        购物车
+                    </a>
+                </div>
+                <div class="mui-col-xs-3">
+                    <a href="#">
+                        <i class="fa fa-home"></i>
+                        个人中心
+                    </a>
+                </div>
+            </div>
+        </footer>
+        <script src="./lib/mui/js/mui.min.js"></script>
+        <script src="./lib/zepto/zepto.min.js"></script>
+        <script src="./lib/artTemplate/template-web.js"></script>
+        <script type="text/html" id="searchTpl">
+            {{each list value index}}
+              <li class="mui-table-view-cell" data-suoyin="{{index}}">{{value}}
+                    <span class="mui-badge fa fa-close removeBtn"></span>
+              </li>
+              
+            {{/each}}
+        </script>
+        <script src="./js/search.js"></script>
+</body>
+</html>

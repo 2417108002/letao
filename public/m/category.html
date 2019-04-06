@@ -28,7 +28,7 @@
             
         </div>
         <div class="right">
-            <a href="#" class="fa fa-search"></a>
+            <a href="./search.html" class="fa fa-search"></a>
         </div>
     </headr>
     <main id="main">
@@ -37,27 +37,9 @@
                    
                     <div class="mui-scroll-wrapper">
                             <div class="mui-scroll">
-                                    <ul>
+                                    <ul class="categoryListUl">
                                             <li><a href="#">分类1</a></li>
-                                            <li><a href="#">分类2</a></li>
-                                            <li><a href="#">分类3</a></li>
-                                            <li><a href="#">分类4</a></li>
-                                            <li><a href="#">分类5</a></li>
-                                            <li><a href="#">分类6</a></li>
-                                            <li><a href="#">分类7</a></li>
-                                            <li><a href="#">分类8</a></li>
-                                            <li><a href="#">分类9</a></li>
-                                            <li><a href="#">分类10</a></li>
-                                            <li><a href="#">分类11</a></li>
-                                            <li><a href="#">分类12</a></li>
-                                            <li><a href="#">分类13</a></li>
-                                            <li><a href="#">分类14</a></li>
-                                            <li><a href="#">分类15</a></li>
-                                            <li><a href="#">分类16</a></li>
-                                            <li><a href="#">分类17</a></li>
-                                            <li><a href="#">分类18</a></li>
-                                            <li><a href="#">分类19</a></li>
-                                            <li><a href="#">分类20</a></li>
+                                            
                                         </ul>
                             </div>
                         </div>
@@ -487,6 +469,36 @@
         </div>
     </footer>
     <script src="./lib/mui/js/mui.js"></script>
+    <script src="./lib/zepto/zepto.min.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script type="text/html" id="categoryLeftListTpl">
+       {{each rows value}}         
+       <li data-id="{{value.id}}">
+           {{if value.id == 1}}
+           <a class="active" href="#">
+           {{else}}    
+           <a href="#">
+           {{/if}}
+           {{value.categoryName}}</a>
+       </li>
+       {{/each}}
+      
+    </script>
+    <script type="text/html" id="categoryRightListTpl">
+        {{if rows.length > 0}}
+         {{each rows value}}
+         <div class="mui-col-xs-4">
+            <a href="#">
+                <img src="{{value.brandLogo}}" alt="">
+                
+                <p>{{value.brandName}}</p>
+            </a>
+        </div>
+         {{/each}}
+         {{else}}
+         <p>该分类还没有商品上架</p>
+          {{/if}}
+    </script>
     <script src="./js/category.js"></script>
 </body>
 </html>
