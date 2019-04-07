@@ -1,0 +1,49 @@
+@import "base.less";
+#main {
+    padding: .1rem;
+   .mui-card {
+       margin: .1rem 0;
+       .mui-card-header {
+          a {
+              color: #666;
+              font-size: .14rem;
+              &.active {
+                  color: red;
+              }
+          }
+       }
+       .mui-card-content {
+           padding: .05rem;
+           .mui-row {
+               > div {
+                   &:nth-child(odd){
+                       padding-right: .05rem;
+                   }
+                   &:nth-child(even){
+                       padding-left: .05rem;
+                   }
+                  .product {
+                      width: 100%;
+                      border: .01rem solid #ccc;
+                      text-align: center;
+                      img {
+                          width: 100%;
+                          height: 1rem;
+                    }
+                    .product-name {
+                        overflow:hidden;
+                        text-overflow:ellipsis;
+                        display:-webkit-box;
+                        -webkit-box-orient:vertical;
+                        -webkit-line-clamp:2;
+                    }
+                      button {
+                          margin-bottom: .1rem;
+                      }
+                  }
+               }
+           }
+       }
+   }
+
+}

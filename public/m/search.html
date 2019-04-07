@@ -78,7 +78,8 @@
         <script src="./lib/artTemplate/template-web.js"></script>
         <script type="text/html" id="searchTpl">
             {{each list value index}}
-              <li class="mui-table-view-cell" data-suoyin="{{index}}">{{value}}
+              <li class="mui-table-view-cell" data-suoyin="{{index}}">
+                  <a href="./productlist.html?search={{value}}">{{value}}</a>
                     <span class="mui-badge fa fa-close removeBtn"></span>
               </li>
               

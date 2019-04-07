@@ -5,52 +5,17 @@ $(function(){
     addHistory();
     clearHistory();
     removeHistory();
-//   function searchHistory(){
-//       $('.searchBtn').on('tap',function(){
-//           if(localStorage.getItem('searchHistory')){
-//               var arr = JSON.parse(localStorage.getItem('searchHistory'));
-//           }else {
-//              var arr = []; 
-//           }
-//           console.log(localStorage.getItem('searchHistory'));
-          
-//          let searchCont = $('.search').val().trim();
-//          if( searchCont.length == 0 ){
-//              return;
-//          }
-//          for(let i = 0; i < arr.length;i++){
-//             if(arr[i] == searchCont){
-//                 arr.splice(i,1);
-//                 i--;
-//             }
-//         }
-//          arr.unshift(searchCont);
-//          let json = JSON.stringify(arr);
-//          localStorage.setItem('searchHistory',json); 
-//          addHistory();
-//       });
-//   }
-
-//   function addHistory(){
-//      //将记录添加到列表
-//      arr = JSON.parse(localStorage.getItem('searchHistory'));
-//      for(let i = 0; i < arr.length;i++){
-//          let html = template('searchTpl',{list:arr});
-//          $('.record').html(html);
-//      }
-//   }
-
-
 
 
 function searchHistory(){
    
    $('.searchBtn').on('tap',function(){
-       if(localStorage.getItem('searchHistory')){
-           var arr = JSON.parse(localStorage.getItem('searchHistory'));
-       }else{
-           var arr = [];
-       } 
+    //    if(localStorage.getItem('searchHistory')){
+    //        var arr = JSON.parse(localStorage.getItem('searchHistory'));
+    //    }else{
+    //        var arr = [];
+    //    } 
+    var arr = getHistory();
        let searchCont = $('.search').val().trim();
        if(searchCont.length == 0){
            return;
@@ -65,15 +30,18 @@ function searchHistory(){
        arr.unshift(searchCont);
        let json = JSON.stringify(arr);
        localStorage.setItem('searchHistory',json);
+    // setHistory();
        addHistory();
+       location = "productlist.html?search="+searchCont;
    });
 };
  function addHistory(){
-        if(localStorage.getItem('searchHistory')){
-            var arr = JSON.parse(localStorage.getItem('searchHistory'));
-        }else{
-            var arr = [];
-        } 
+        // if(localStorage.getItem('searchHistory')){
+        //     var arr = JSON.parse(localStorage.getItem('searchHistory'));
+        // }else{
+        //     var arr = [];
+        // } 
+        var arr = getHistory();
      let html = template('searchTpl',{list:arr});
 
      $('.search').val('');
@@ -99,7 +67,21 @@ function removeHistory(){
         }
         let json = JSON.stringify(arr);
         localStorage.setItem('searchHistory',json);
+        // setHistory();
         addHistory();
     });
+}
+
+function getHistory(){
+    if(localStorage.getItem('searchHistory')){
+        var arr = JSON.parse(localStorage.getItem('searchHistory'));
+    }else{
+        var arr = [];
+    } 
+    return arr;
+}
+
+function setHistory(){
+        localStorage.setItem('searchHistory',JSON.stringify(arr));
 }
 });

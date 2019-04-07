@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品列表</title>
+   <!-- 引入mui框架样式 -->
+   <link rel="stylesheet" href="./lib/mui/css/mui.css">
+   <!-- 引入字体图标 -->
+   <link rel="stylesheet" href="./lib/fontAwesome/css/font-awesome.css">
+   <!-- 引入网站图标 -->
+   <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+   <!-- 引入自己的样式文件 -->
+   <link rel="stylesheet" href="./less/productlist.css">
+</head>
+<body>
+      <headr id="header">
+          <div class="left">
+              <a href="#">
+                  <i class="fa fa-arrow-left"></i>
+              </a>
+          </div>
+          <div class="center">
+             <h4>商品列表</h4>
+          </div>
+          <div class="right">
+              
+          </div>
+      </headr>
+      <main id="main">
+            <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+                    <div class="mui-scroll">
+                        <!--数据列表-->
+                        <ul class="mui-table-view mui-table-view-chevron">
+                                <form action="#">
+                                        <input class="search" type="seaerch" placeholder="请输入你要搜索的商品">
+                                        <input class="searchBtn" type="button" value="搜索">
+                                </form>
+                                <div class="mui-card">
+                                        <!--页眉，放置标题-->
+                                        <div class="mui-card-header">
+                                            <a href="#" data-type="time" data-sort="1">上架时间<i class="fa fa-angle-down"></i></a>
+                                            <a href="#" data-type="price" data-sort="1">价格<i class="fa fa-angle-down"></i></a>
+                                            <a href="#" data-type="num" data-sort="1">销量<i class="fa fa-angle-down"></i></a>
+                                            <a href="#" data-type="discount" data-sort="1">折扣<i class="fa fa-angle-down"></i></a>
+                                        </div>
+                                        <!--内容区-->
+                                        <div class="mui-card-content">
+                                              
+                                                  <div class="mui-row">
+                                                          <div class="mui-col-xs-6">
+                                                              <div class="product">
+                                                                    <img src="./images/nav4.png" alt="">
+                                                                    <p>李宁闪击篮球鞋驭帅10镭射队尚4男韦德之道空袭中高帮队尚3.5球鞋</p>
+                                                                    <p>
+                                                                        <span>¥888.88</span>
+                                                                        <del>¥999.99</del>
+                                                                    </p>
+                                                                    <button>立即购买</button>
+                                                              </div>
+                                                              
+                                                          </div>
+                                                          <div class="mui-col-xs-6">
+                                                                <div class="product">
+                                                                      <img src="./images/brand5.png" alt="">
+                                                                      <p>李宁闪击篮球鞋驭帅10镭射队尚4男韦德之道空袭中高帮队尚3.5球鞋</p>
+                                                                      <p>
+                                                                          <span>¥888.88</span>
+                                                                          <del>¥999.99</del>
+                                                                      </p>
+                                                                      <button>立即购买</button>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                          
+                                                     </div>
+                                        </div>
+                                 </div>
+                        </ul>
+                    </div>
+                </div>             
+      </main>
+      <footer id="footer">
+          <div class="mui-row">
+              <div class="mui-col-xs-3">
+                  <a href="#">
+                      <i class="fa fa-home"></i>
+                      首页
+                  </a>
+              </div>
+              <div class="mui-col-xs-3">
+                  <a href="#" class="footActive">
+                      <i class="fa fa-home"></i>
+                      分类
+                  </a>
+              </div>
+              <div class="mui-col-xs-3">
+                  <a href="#">
+                      <i class="fa fa-home"></i>
+                      购物车
+                  </a>
+              </div>
+              <div class="mui-col-xs-3">
+                  <a href="#">
+                      <i class="fa fa-home"></i>
+                      个人中心
+                  </a>
+              </div>
+          </div>
+      </footer>
+      <script src="./lib/mui/js/mui.min.js"></script>
+      <script src="./lib/zepto/zepto.min.js"></script>
+      <script src="./lib/artTemplate/template-web.js"></script>
+      <script type="text/html" id="productTpl">
+        {{each data value }}
+        <div class="mui-col-xs-6">
+                <div class="product">
+                      <img src="{{value.pic[0].picAddr}}" alt="">
+                      <p class="product-name">{{value.proName}}</p>
+                      <p>
+                          <span>¥{{value.price}}</span>
+                          <del>¥{{value.oldPrice}}</del>
+                      </p>
+                      <button>立即购买</button>
+                </div>
+                
+        </div>
+        {{/each}}
+      </script>
+      <script src="./js/productlist.js"></script>
+</body>
+</html>
