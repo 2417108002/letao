@@ -2,6 +2,7 @@ $(function(){
     requestProduct();
     btnSearch();
     sortProduct();
+    gotodetails();
     var searchCont;
     function requestProduct(){
         searchCont = getQueryString('search');
@@ -110,11 +111,23 @@ $(function(){
                   console.log(obj);
                   let html = template('productTpl',obj);
                   $('.mui-card-content .mui-row').append(html);
-                  mui('#pullrefresh').pullRefresh().endPullupToRefresh();  
+                  if(obj.data.length > 0){
+                    mui('#pullrefresh').pullRefresh().endPullupToRefresh();
+                  }else{
+                       mui('#pullrefresh').pullRefresh().endPullupToRefresh(true); 
+                  }
+                  
             }
         });
     }
     
+
+    function gotodetails(){
+        $('.mui-row').on('tap','.btn-buy',function(){
+            let productId = $(this).data('productId');
+            location = "./details.html?id="+productId;
+        });
+    }
 });
 
 

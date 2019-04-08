@@ -118,3 +118,40 @@ body {
 #footer .mui-row > div a.footActive {
   color: orange;
 }
+#main .mui-media .carListLeft img {
+  max-width: .8rem;
+  height: .6rem;
+  margin-bottom: .03rem;
+}
+#main .mui-media .carListLeft .mui-checkbox {
+  width: .8rem;
+  height: auto;
+  text-align: center;
+}
+#main .mui-media .carListLeft .mui-checkbox input[type='checkbox'] {
+  position: static;
+}
+#main .mui-media .mui-media-body {
+  padding: 0 .1rem;
+}
+#main .mui-media .mui-media-body .product-name {
+  white-space: normal;
+}
+#main .mui-media .mui-media-body .product-price span {
+  color: red;
+  margin-right: .03rem;
+}
+#main .mui-media .mui-media-body .product-price del {
+  color: #666;
+}
+#money {
+  border-top: 1px solid #666;
+  line-height: .35rem;
+}
+#money .need-money {
+  color: red;
+}
+#money .btn-buy {
+  width: .8rem;
+  height: .35rem;
+}

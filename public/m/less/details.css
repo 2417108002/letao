@@ -118,3 +118,20 @@ body {
 #footer .mui-row > div a.footActive {
   color: orange;
 }
+#main #slider a {
+  display: block;
+}
+#main #slider a img {
+  width: 100%;
+  height: 3rem;
+}
+#main .mui-table-view .product-price span {
+  color: red;
+  margin-right: .02rem;
+}
+#main .mui-table-view .product-price del {
+  color: #ccc;
+}
+#main .mui-table-view .product-size button {
+  margin-bottom: .05rem;
+}

@@ -118,3 +118,6 @@ body {
 #footer .mui-row > div a.footActive {
   color: orange;
 }
+#main form {
+  flex-direction: column;
+}

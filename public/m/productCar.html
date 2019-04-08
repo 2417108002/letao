@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车页面</title>
+    <!-- 引入mui框架样式 -->
+    <link rel="stylesheet" href="./lib/mui/css/mui.css">
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="./lib/fontAwesome/css/font-awesome.css">
+    <!-- 引入网站图标 -->
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <!-- 引入css -->
+    <link rel="stylesheet" href="./less/productCar.css">
+</head>
+<body>
+        <headr id="header">
+                <div class="left">
+                    <a href="#">
+                        <i class="fa fa-arrow-left"></i>
+                    </a>
+                </div>
+                <div class="center">
+                   <h4>购物车</h4>
+                </div>
+                <div class="right">
+                        <a href="#" class="fa fa-refresh"></a>
+                </div>
+        </headr>
+        <main id="main">
+                <div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+                    <div class="mui-scroll">
+                        <!--数据列表-->
+                        <ul class="mui-table-view">
+                            <li class="mui-table-view-cell mui-media">
+                                <a href="javascript:;">
+                                    <div class="carListLeft mui-pull-left">
+                                        <img class="mui-media-object " src="./images/banner1.png">
+                                        <div class="mui-input-row mui-checkbox">
+                                            <input name="checkbox1" value="Item 1" type="checkbox" checked>
+                                        </div>
+                                    </div>
+                
+                                    <div class="mui-media-body">
+                                        <div class="product-name">
+                                            Sport飓风Nike Kwazi休闲运动鞋男844839-002-001-100-400
+                                        </div>
+                                        <div class="product-price">
+                                            价格: <span>¥499.1</span><del>¥888.1</del>
+                                        </div>
+                                        <div class="product-parameter">
+                                            <div class="product-size mui-pull-left">
+                                                鞋码: <span>40</span>
+                                            </div>
+                                            <div class="product-num mui-pull-right">
+                                                x<span>4</span>双
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                
+                        </ul>
+                    </div>
+                </div>
+               
+        </main>
+        <section id="money">
+            <div class="need-money mui-pull-left ">
+                订单总额: ¥<span>0.00</span>
+            </div>
+            <button type="button" class="mui-btn mui-btn-danger mui-pull-right btn-buy">红色</button>
+        </section>
+        <footer id="footer">
+                <div class="mui-row">
+                    <div class="mui-col-xs-3">
+                        <a href="#">
+                            <i class="fa fa-home"></i>
+                            首页
+                        </a>
+                    </div>
+                    <div class="mui-col-xs-3">
+                         <a href="#" class="footActive">
+                                 <i class="fa fa-home"></i>
+                                 分类
+                             </a>
+                    </div>
+                    <div class="mui-col-xs-3">
+                         <a href="#">
+                                 <i class="fa fa-home"></i>
+                                 购物车
+                             </a>
+                    </div>
+                    <div class="mui-col-xs-3">
+                         <a href="#">
+                                 <i class="fa fa-home"></i>
+                                 个人中心
+                             </a>
+                    </div>
+                </div>
+        </footer>
+    <script src="./lib/mui/js/mui.min.js"></script>
+    <script src="./lib/zepto/zepto.min.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script type="text/html" id="carListTpl">
+        {{each data value}}
+        <li class="mui-table-view-cell mui-media">
+                <a href="javascript:;">
+                    <div class="carListLeft mui-pull-left">
+                         <img class="mui-media-object " src="{{value.pic[0].picAddr}}">
+                         <div class="mui-input-row mui-checkbox">
+                                <input name="checkbox1" value="Item 1" type="checkbox" checked>
+                        </div>
+                    </div>
+                   
+                    <div class="mui-media-body">
+                        <div class="product-name">
+                            {{value.proName}}
+                        </div>
+                        <div class="product-price">
+                                价格: <span>¥{{value.price}}</span><del>¥{{value.oldPrice}}</del>
+                        </div>
+                        <div class="product-parameter">
+                            <div class="product-size mui-pull-left">
+                                鞋码: <span>{{value.size}}</span>
+                            </div>
+                            <div class="product-num mui-pull-right">
+                                    x<span>{{value.num}}</span>双
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            {{/each}}
+    </script>
+    <script src="./js/productCar.js"></script>
+</body>
+</html>
