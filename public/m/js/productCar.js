@@ -1,5 +1,8 @@
 $(function(){
     selectCar();
+    deleteBtn();
+    exitBtn();
+    
     var page = 1;
     //初始化
     function selectCar(){
@@ -31,11 +34,16 @@ $(function(){
             },
             success:function(obj){
                 console.log(obj);
+                
                 let html = template('carListTpl',obj);
                 $('.mui-table-view').html(html);
                 mui('.mui-scroll-wrapper').pullRefresh().endPulldownToRefresh();
                 mui('.mui-scroll-wrapper').pullRefresh().refresh(true);
                 page = 1;
+                sum();
+                $('.mui-table-view input').on('change',function(){
+                    sum();
+                });
             }
         });
     }
@@ -60,5 +68,101 @@ $(function(){
                
             }
         });
+    }
+
+    function deleteBtn(){
+        $('.mui-table-view').on('tap','.btn-delete',function(){
+              var li = $(this).parents().parents();//li是jquery对象
+            
+              
+                var btnArray = ['是', '否'];
+                var id = $(this).data('id');
+				mui.confirm('您确认要从购物车中移除该商品？', '温馨提示', btnArray, function(e) {
+					if (e.index == 0) {
+                        $.ajax({
+                            url:'/cart/deleteCart',
+                            data: {
+                                id:id
+                            },
+                            success:function(obj){
+                                if(obj.success){
+                                    PulldownToRefresh()
+                                }else{
+                                    mui.toast('删除失败');
+                                }
+                            }
+                        });
+					} else {
+						setTimeout(function() {
+                            mui.swipeoutClose(li[0]);//转成dom对象
+                        }, 0);
+					}
+				});
+        });
+    }
+
+    function exitBtn(){
+        $('.mui-table-view').on('tap','.btn-exit',function(){
+            var li = $(this).parents().parents();//li是jquery对象
+            var data = $(this).data('product');
+            var btnArray = ['是', '否'];
+            var min = +data.productSize.split('-')[0];
+            var max = +data.productSize.split('-')[1];
+            // 2.2 定义一个新的尺码数组来吧每个加进去
+            data.productSize = [];
+            // 2.3 循环从min开始到max结束 得包含max
+            for (var i = min; i <= max; i++) {
+                // 2.4 把每个i的值添加到数组里面
+                data.productSize.push(i);
+            }
+            var html = template('editTpl',data);
+            html = html.replace(/[\r\n]/g, '');
+            mui.confirm(html, '编辑商品标题', btnArray, function(e) {
+               
+                if (e.index == 0) {
+                   var size = $('.btn-size.mui-btn-warning').data('size');
+                   var num = mui('.mui-numbox').numbox().getValue();
+                   $.ajax({
+                       type:'post',
+                       url:'/cart/updateCart',
+                       data:{
+                           id:data.id,
+                           size: size,
+                           num:num
+                       },
+                       success:function(obj){
+                           if(obj.success){
+                            PulldownToRefresh()
+                        }else{
+                            mui.toast('修改失败');
+                        }
+                       }
+                   });
+                } else {
+                    setTimeout(function() {
+                        mui.swipeoutClose(li[0]);//转成dom对象
+                    }, 0);
+                }
+            });
+            mui(".mui-numbox").numbox();
+            $('.product-size button').on('tap',function(){
+                $(this).addClass('mui-btn-warning').siblings().removeClass('mui-btn-warning');
+            });
+        });
+    }
+
+    function sum(){
+        var sum = 0;
+        var checkboxs = $('.mui-checkbox input:checked');
+        console.log(checkboxs);
+        checkboxs.each(function(index,value){
+            var num = parseInt($(value).data('num')) ;
+            var price = parseInt($(value).data('price'));
+            console.log(num);
+            console.log(price);
+            sum += num * price;
+        });
+        
+        $('.need-money').find('span').html(sum);
     }
 });

@@ -2,36 +2,50 @@
 
 #main {
     .mui-media {
-        .carListLeft {
-            img {
-                max-width: .8rem;
-                height: .6rem;
-                margin-bottom: .03rem;
-            }
-            .mui-checkbox {
-              width: .8rem;
-              height: auto;
-              text-align: center;
-            }
-            .mui-checkbox input[type='checkbox'] {
-                position: static;
-            }
+        .mui-slider-handle {
+            a {
+     color: #333;
+
+     .carListLeft {
+         img {
+             max-width: .8rem;
+             height: .6rem;
+             margin-bottom: .03rem;
+         }
+
+         .mui-checkbox {
+             width: .8rem;
+             height: auto;
+             text-align: center;
+         }
+
+         .mui-checkbox input[type='checkbox'] {
+             position: static;
+         }
+     }
+
+     .mui-media-body {
+         padding: 0 .1rem;
+
+         .product-name {
+             white-space: normal;
+         }
+
+         .product-price {
+             span {
+                 color: red;
+                 margin-right: .03rem;
+             }
+
+             del {
+                 color: #666;
+             }
+         }
         }
-        .mui-media-body {
-            padding: 0 .1rem;
-            .product-name {
-                white-space: normal;
             }
-            .product-price {
-                span {
-                    color: red;
-                    margin-right: .03rem;
-                }
-                del {
-                    color: #666;
-                }
-            }
+        
         }
+      
     }
 }
 #money {
@@ -39,6 +53,7 @@
     line-height: .35rem;
     .need-money {
         color: red;
+
     }
     .btn-buy {
         width: .8rem;

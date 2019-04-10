@@ -93,7 +93,7 @@
                              </a>
                     </div>
                     <div class="mui-col-xs-3">
-                         <a href="#">
+                         <a href="./user.html">
                                  <i class="fa fa-home"></i>
                                  个人中心
                              </a>
@@ -106,11 +106,17 @@
     <script type="text/html" id="carListTpl">
         {{each data value}}
         <li class="mui-table-view-cell mui-media">
+            <div class="mui-slider-right mui-disabled">
+                <a class="mui-btn mui-btn-blue btn-exit " data-product="{{value}}">编辑</a>
+                
+                <a class="mui-btn mui-btn-red btn-delete" data-id="{{value.id}}">删除</a>
+            </div>
+            <div class="mui-slider-handle">
                 <a href="javascript:;">
                     <div class="carListLeft mui-pull-left">
                          <img class="mui-media-object " src="{{value.pic[0].picAddr}}">
                          <div class="mui-input-row mui-checkbox">
-                                <input name="checkbox1" value="Item 1" type="checkbox" checked>
+                                <input class="checkbox" name="checkbox1" value="Item 1" type="checkbox" checked data-num="{{value.num}} " data-price="{{value.price}}">
                         </div>
                     </div>
                    
@@ -131,8 +137,43 @@
                         </div>
                     </div>
                 </a>
-            </li>
+            </div>
+        </li>
+       
             {{/each}}
+    </script>
+    <script type="text/html" id="editTpl">
+        <ul class="mui-table-view">  
+                <li class="mui-table-view-cell">
+                        <!-- mui默认给子元素按钮设置定位 把按钮变成li的孙子 不需要修改样式 -->
+                        <div class="product-size">
+                            尺码：
+                            <!-- 遍历自己给他创建一个size数组 -->
+                            <!-- 现在data里面有很多数据 productSize所有尺码 size当前尺码 productNum所有数量 num当前选择数量 -->
+                            {{each productSize value}}
+                            <!-- value所有尺码某个尺码 size之前选择的尺码 当2个一样的时候设置类名 -->
+                            <button type="button" class="mui-btn btn-size {{value == size ? 'mui-btn-warning' : ''}}"
+                                data-size="{{value}}">{{value}}</button>
+                            {{/each}}
+                        </div>
+        
+                    </li>
+                    <li class="mui-table-view-cell">
+                        <!-- data-numbox-step='1'每次+几个 
+                data-numbox-min='0' 最小值
+                data-numbox-max='10' 最大值 -->
+                        <div class="product-num">
+                            数量：
+                            <div class="mui-numbox" data-numbox-step='1' data-numbox-min='1' data-numbox-max='{{productNum}}'>
+                                <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
+                                <input class="mui-numbox-input" type="number" value="{{num}}" />
+                                <button class="mui-btn mui-numbox-btn-plus" type="button">+</button>
+                            </div>
+                            剩余 <span>{{productNum}}</span> 件
+                        </div>
+        
+                    </li>
+        </ul>  
     </script>
     <script src="./js/productCar.js"></script>
 </body>
