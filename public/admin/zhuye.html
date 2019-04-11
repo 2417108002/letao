@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户管理</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./less/zhuye.css">
+</head>
+<body>
+    <main id="main">
+       <section class="left" >
+           <div class="userInfo">
+                <img src="./images/1.png" alt="..." class="img-circle">
+                <p>小姐姐</p>
+           </div>
+           <div class="navlist">
+                <a href="#" class="active">用户管理</a>
+                <a data-toggle="collapse" href="#collapseExample">分类管理</a>
+                <div class="collapse" id="collapseExample">
+                        <div class="well">
+                          <a href="firstcategory.html">一级分类</a>
+                          <a href="secondCategory.html">二级分类</a>
+                        </div>
+                </div>
+                <a href="#">商品管理</a>
+           </div>
+       </section>
+       <section class="right">
+           <div class="title">
+               <a href="#" class="glyphicon glyphicon-list"></a>
+               <a href="#" class="glyphicon glyphicon-off exit"></a>
+           </div>
+           <div class="info">
+                <table class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>用户名</th>
+                            <th>电话</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td><button type="button" class="btn btn-danger">禁用</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <ul id="page"></ul>
+           </div>
+       </section>
+    </main>
+    <script src="./lib/jquery/jquery.min.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./lib/bootstrap/js/bootstrap-paginator.js"></script>
+    <script src="./js/common.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script type="text/html" id="indexTpl">
+        {{each rows value}}
+        <tr>
+                <th scope="row">{{value.id}}</th>
+                <td>{{value.username}}</td>
+                <td>{{value.mobile}}</td>
+                {{if value.isDelete == 0}}
+                <td>已禁用</td>
+                <td><button type="button" class="btn btn-success btn-togle" data-id="{{value.id}}" data-isdelete="{{value.isDelete}}">启用</button></td>
+                {{else}}
+                <td>已启用</td>
+                <td><button type="button" class="btn btn-danger btn-togle" data-id="{{value.id}}" data-isdelete="{{value.isDelete}}">禁用</button></td>
+                {{/if}}
+        </tr>
+        {{/each}}
+    </script>
+    <script src="./js/zhuye.js"></script>
+</body>
+</html>

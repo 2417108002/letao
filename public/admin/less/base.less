@@ -1,0 +1,105 @@
+// 去掉标题默认间距
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+// 去除图片和块级元素3px间隙
+img {
+    vertical-align: middle;
+}
+input {
+    border: none;
+    outline: none;
+}
+a {
+    color: #333;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+
+#main {
+    display: flex;
+    .left {
+        width: 200px;
+        height: 100vh;
+        background-color: #87ceeb;
+        .userInfo { 
+            height: 200px;
+            overflow: hidden;
+            img {
+                display: block;
+                width: 120px;
+                height: 120px;
+                margin: 30px auto 10px;
+            }
+            p {
+                text-align: center;
+            }
+        }
+        .navlist {
+            display: flex;
+            flex-direction: column;
+             a {
+               padding: 10px ;
+               text-decoration: none;
+               &.active,&:hover {
+                   background-color: #ff69b4;
+                   color: #fff;
+                   text-decoration: none;
+               }
+            }
+            #collapseExample {
+                width: 180px;
+                margin-left: 20px;
+                .well {
+                    display: flex;
+                    flex-direction: column;
+                    background-color: #87ceeb;
+                    padding-right: 0;
+                    border-color: transparent;
+                }
+            }
+        }
+    }
+    .right {
+        flex: 1;
+        background-color: #fff;
+        .title {
+            display: flex;
+            height: 80px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            a {
+                font-size: 20px;
+                color: #ff69b4;
+            }
+        }
+        .info {
+            background-color: #f5f5f5;
+            padding: 50px 30px;
+            .table {
+                text-align: center;
+                thead {
+                    tr {
+                       th {
+                        text-align: center;
+                    } 
+                    }
+                    
+                }
+            }
+        }
+    }
+}

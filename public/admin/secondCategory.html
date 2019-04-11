@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第一分类页面</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./less/secondcategory.css">
+</head>
+<body>
+        <main id="main">
+                <section class="left" >
+                    <div class="userInfo">
+                         <img src="./images/1.png" alt="..." class="img-circle">
+                         <p>小姐姐</p>
+                    </div>
+                    <div class="navlist">
+                         <a href="./zhuye.html" >用户管理</a>
+                         <a data-toggle="collapse" href="#collapseExample">分类管理</a>
+                         <div class="collapse in" id="collapseExample">
+                                 <div class="well">
+                                   <a href="firstcategory.html" >一级分类</a>
+                                   <a href="secondCategory.html" class="active">二级分类</a>
+                                 </div>
+                         </div>
+                         <a href="#">商品管理</a>
+                    </div>
+                </section>
+                <section class="right">
+                    <div class="title">
+                        <a href="#" class="glyphicon glyphicon-list"></a>
+                        <a href="#" class="glyphicon glyphicon-off exit"></a>
+                    </div>
+                    <div class="info">
+                            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                                    添加品牌
+                                  </button>
+                                  
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                          <h4 class="modal-title" id="myModalLabel">添加分类</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                                <div class="form-group clearfix">
+                                                        <label for="inputEmail3" class="control-label">分类名称：</label>
+                                                        <div class="category-form">
+                                                            <select name="" class="form-control select-category">
+                                                                <option value="人才馆">人才馆</option>
+                                                                <option value="人才馆">人才馆</option>
+                                                                <option value="人才馆">人才馆</option>
+                                                                <option value="人才馆">人才馆</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group clearfix">
+                                                        <label for="inputEmail3" class="control-label">品牌名称：</label>
+                                                        <div class="category-form">
+                                                            <input type="text" class="form-control input-brand" id="inputEmail3" placeholder="请输入分类名称">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group clearfix">
+                                                        <label for="inputEmail3" class="control-label">品牌图片：</label>
+                                                        <div class="category-form">
+                                                            <input type="file" class="form-control brand-img-file" id="inputEmail3" placeholder="请选择图片">
+                                                        </div>                        
+                                                    </div>
+                                                    <img src="images/1.png" class="show-img" alt="">
+                                
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                          <button type="button" class="btn btn-primary btn-save" data-dismiss="modal">保存</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                            <table class="table table-bordered table-striped">
+                                    <thead>
+                                      <tr>
+                                        <th>#</th>
+                                        <th>品牌编号</th>
+                                        <th>品牌名称</th>
+                                        <th>品牌logo</th>
+                                        <th>所属分类</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td scope="row"><input type="checkbox" name="" id=""></td>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td><img src="./images/2.png" alt=""></td>
+                                        <td>Otto</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <ul id="page"></ul>
+                    </div>
+                </section>
+             </main>
+             <script src="./lib/jquery/jquery.min.js"></script>
+             <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+             <script src="./lib/bootstrap/js/bootstrap-paginator.js"></script>
+             <script src="./js/common.js"></script>
+             <script src="./lib/artTemplate/template-web.js"></script>
+             <script type="text/html" id="secondTpl">
+                {{each rows value}}
+                    <tr>
+                        <td scope="row"><input type="checkbox" name="" id=""></td>
+                        <td>{{value.id}}</td>
+                        <td>{{value.brandName}}</td>
+                        <td><img src="{{value.brandLogo}}" alt=""></td>
+                        <td>{{value.categoryName}}</td>
+                    </tr>
+                {{/each}}             
+             </script>
+             <script src="./js/secondcategory.js"></script>
+</body>
+</html>
