@@ -4,6 +4,8 @@ $(function(){
     
     selectUser();
     selectcategoryList();
+    selectImg();
+    addproduct();
     // addCategory()
     function selectUser(){
         console.log(1);
@@ -38,32 +40,60 @@ $(function(){
             url:'/category/queryTopCategory',
             success:function(obj){
                 console.log(obj);
-                
+                var html = "";
+                for (let i = 0; i < obj.rows.length; i++) {
+                    
+                    html += '<option value="'+obj.rows[i].id+'">'+obj.rows[i].categoryName+'</option>';
+                }
+                $('.select-category').html(html);
             }
         });
     }
-    // function addCategory(){
-        
-    //     $('.btn-save').on('click',function(){
-    //           var category = $('.category').val().trim();
-    //           if(!category){
-    //               alert('分类名不能为空');
-    //               return false;
-    //           }
-    //           $.ajax({
-    //               type: 'post',
-    //               url:'/category/addTopCategory',
-    //               data: {
-    //                 categoryName:category
-    //               },
-    //               success:function(obj){
-    //                   console.log(obj);
-    //                   if(obj.success){
-    //                     selectUser();
-    //                   }
-    //               }
-    //           });
-    //     });
-    // }
+    
+    function selectImg(){
+        $('.select-img').on('change',function(){
+            var file = this.files[0];
+            if(!file){
+                alert("请选择一张图片");
+                return;
+            }
+            var pic = URL.createObjectURL(file);
+            $('.file-img').attr('src',pic);
+        });
+    }
+
+    function addproduct(){
+        $('.btn-save').on('click',function(){
+            var categoryId = $('.select-category').val();
+            var brandName = $('.brand-name').val().trim();
+            
+            if (!brandName) {
+                alert('请输入品牌名称');
+                return false;
+            }
+            console.log(brandName);
+            var brandLogo = $('.file-img').attr('src');
+            if (!brandLogo) {
+                alert('请选择图片');
+                return false;
+            }
+            console.log(brandLogo);
+            $.ajax({
+                type:'post',
+                url: '/category/addSecondCategory',
+                data:{
+                    brandName: brandName,
+                    categoryId:categoryId,
+                    brandLogo:brandLogo,
+                    hot:1
+                },
+                success:function(obj){
+                    if(obj.success){
+                        selectUser();
+                    }
+                }
+            });
+        });
+    }
 
 });
